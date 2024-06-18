@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
-import { AcademicDepartmentServices } from './AcademicDept.services';
 import sendResponse from '../../utils/sendResponse';
+import { AcademicDepartmentServices } from './AcademicDept.Services';
 
 const createAcademicDepartment = catchAsync(async (req, res) => {
   const result =
@@ -10,7 +10,7 @@ const createAcademicDepartment = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department is created succesfully',
+    message: 'Department is created successfully',
     data: result,
   });
 });
@@ -22,7 +22,7 @@ const getAllAcademicDepartments = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic departments are retrieved successfully',
+    message: 'Departments are retrieved successfully',
     data: result,
   });
 });
@@ -37,7 +37,7 @@ const getSingleAcademicDepartment = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic department is retrieved succesfully',
+    message: 'Department is retrieved successfully',
     data: result,
   });
 });
@@ -52,7 +52,7 @@ const updateAcademicDepartment = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic Department updated successfully!',
+    message: 'Department updated successfully!',
     data: result,
   });
 });

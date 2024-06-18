@@ -17,7 +17,7 @@ const getSingleAcademicDepartmentFromDB = async (id: string) => {
   return result;
 };
 
-const updateAcademicDepartmentInDB = async (id: string, payload) => {
+const updateAcademicDepartmentInDB = async (id: string, payload: Partial<TAcademicDepartment>) => {
   const result = await AcademicDepartment.findOneAndUpdate(
     { _id: id },
     payload,
