@@ -95,6 +95,7 @@ const StudentSchema = new Schema<TStudent, StudentModel>(
     },
     email: {
       type: String,
+      unique: true,
       required: [true, 'Email is required'],
     },
     contactNo: {
@@ -151,7 +152,7 @@ const StudentSchema = new Schema<TStudent, StudentModel>(
 
 //virtual
 StudentSchema.virtual('fullName').get(function () {
-  return `${this.name.firstName} ${this.name.middleName} ${this.name.lastName}`;
+  return `${this?.name?.firstName} ${this?.name?.middleName} ${this?.name?.lastName}`;
 });
 
 // query middleware
