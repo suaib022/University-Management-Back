@@ -2,11 +2,13 @@ import express from 'express';
 import { SemesterRegistrationControllers } from './semesterRegistration.controller';
 import validateRequest from '../../middlewares/validateRequest';
 import { SemesterRegistrationValidations } from './semesterRegistration.validation';
+import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
 router.post(
   '/create-semester-registration',
+  auth('admin'),
   validateRequest(
     SemesterRegistrationValidations.createSemesterRegistrationValidationSchema,
   ),
@@ -15,19 +17,29 @@ router.post(
 
 router.get(
   '/:id',
+  auth('admin', 'faculty', 'student'),
   SemesterRegistrationControllers.getSingleSemesterRegistration,
 );
 
 router.patch(
   '/:id',
+  auth('admin'),
   validateRequest(
     SemesterRegistrationValidations.updateSemesterRegistrationValidationSchema,
   ),
   SemesterRegistrationControllers.updateRegisteredSemester,
 );
 
-router.delete('/:id', SemesterRegistrationControllers.deleteRegisteredSemester);
+router.delete(
+  '/:id',
+  auth('admin'),
+  SemesterRegistrationControllers.deleteRegisteredSemester,
+);
 
-router.get('/', SemesterRegistrationControllers.getAllSemesterRegistrations);
+router.get(
+  '/',
+  auth('admin', 'faculty', 'student'),
+  SemesterRegistrationControllers.getAllSemesterRegistrations,
+);
 
 export const semesterRegistrationRoutes = router;
