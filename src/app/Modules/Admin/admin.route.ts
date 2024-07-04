@@ -1,8 +1,8 @@
 import express from 'express';
 import { AdminControllers } from './admin.controller';
 import validateRequest from '../../middlewares/validateRequest';
-import { updateAdminValidationSchema } from './admin.validation';
 import auth from '../../middlewares/auth';
+import { AdminValidations } from './admin.validation';
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get('/:adminId', auth('admin'), AdminControllers.getSingleAdmin);
 router.patch(
   '/:adminId',
   auth('admin'),
-  validateRequest(updateAdminValidationSchema),
+  validateRequest(AdminValidations.updateAdminValidationSchema),
   AdminControllers.updateAdmin,
 );
 

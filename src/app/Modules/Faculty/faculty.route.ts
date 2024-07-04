@@ -1,8 +1,8 @@
 import express from 'express';
 import { FacultyControllers } from './faculty.controller';
 import validateRequest from '../../middlewares/validateRequest';
-import { updateFacultyValidationSchema } from './facultyValidation';
 import auth from '../../middlewares/auth';
+import { FacultyValidations } from './facultyValidation';
 const router = express.Router();
 
 router.get(
@@ -14,7 +14,7 @@ router.get(
 router.patch(
   '/:id',
   auth('admin'),
-  validateRequest(updateFacultyValidationSchema),
+  validateRequest(FacultyValidations.updateFacultyValidationSchema),
   FacultyControllers.updateFaculty,
 );
 

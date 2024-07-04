@@ -72,13 +72,11 @@ const StudentSchema = new Schema<TStudent, StudentModel>(
   {
     id: {
       type: String,
-      unique: true,
       required: [true, 'Student ID is required'],
     },
     user: {
       type: Schema.Types.ObjectId,
       required: [true, 'User id must needed'],
-      unique: true,
       ref: 'User',
     },
     name: {
@@ -133,15 +131,14 @@ const StudentSchema = new Schema<TStudent, StudentModel>(
       type: Schema.Types.ObjectId,
       ref: 'AcademicSemester',
     },
+    academicDepartment: {
+      type: Schema.Types.ObjectId,
+      ref: 'AcademicDepartment',
+    },
     isDeleted: {
       type: Boolean,
       default: false,
     },
-    academicDepartment: {
-      type: Schema.Types.ObjectId,
-      ref: 'AcademicDepartment'
-    }
-
   },
   {
     toJSON: {

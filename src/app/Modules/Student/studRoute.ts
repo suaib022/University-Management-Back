@@ -16,7 +16,7 @@ router.get(
 
 router.get(
   '/:studentId',
-  auth('admin', 'faculty', 'student'),
+  auth('admin', 'faculty'),
   StudentController.getSingleStudent,
 );
 

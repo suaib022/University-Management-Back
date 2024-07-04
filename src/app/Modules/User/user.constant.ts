@@ -7,3 +7,5 @@ const USER_ROLE = {
 export default USER_ROLE;
 
 export type TUserRole = keyof typeof USER_ROLE;
+
+export const UserStatus = ['in-progress', 'blocked'];

@@ -4,8 +4,6 @@ import { AuthValidation } from './auth.validation';
 import { AuthControllers } from './auth.controller';
 import auth from '../../middlewares/auth';
 import USER_ROLE from '../User/user.constant';
-// import USER_ROLE from '../User/user.constant';
-// import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
@@ -28,5 +26,16 @@ router.post(
   AuthControllers.refreshToken,
 );
 
-//  auth(USER_ROLE.admin, USER_ROLE.faculty, USER_ROLE.student),
+router.post(
+  '/forget-password',
+  validateRequest(AuthValidation.forgetPasswordValidationSchema),
+  AuthControllers.forgetPassword,
+);
+
+router.post(
+  '/reset-password',
+  validateRequest(AuthValidation.resetPasswordValidationSchema),
+  AuthControllers.resetPassword,
+);
+
 export const AuthRoutes = router;

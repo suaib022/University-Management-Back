@@ -10,6 +10,11 @@ const userSchema = new Schema<TUser>(
       required: true,
       unique: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     password: {
       type: String,
       required: [true, 'Password is required'],
@@ -59,7 +64,7 @@ userSchema.pre('save', async function (next) {
 // post save middleware / hook
 userSchema.post('save', function (doc, next) {
   doc.password = '';
-  console.log(this, 'post hook : we saved the data');
+  // console.log(this, 'post hook : we saved the data');
   next();
 });
 
