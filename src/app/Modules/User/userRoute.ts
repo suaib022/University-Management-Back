@@ -32,7 +32,7 @@ router.post(
 
 router.post(
   '/create-admin',
-  auth('admin'),
+  // auth('admin'),
   validateRequest(AdminValidations.createAdminValidationSchema),
   UserControllers.createAdmin,
 );

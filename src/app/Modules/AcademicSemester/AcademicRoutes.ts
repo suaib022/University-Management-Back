@@ -5,6 +5,7 @@ import {
   CreateAcademicSemesterValidationSchema,
   UpdateAcademicSemesterValidationSchema,
 } from './AcademicValidation';
+import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
@@ -14,7 +15,11 @@ router.post(
   AcademicSemesterControllers.CreateAcademicSemester,
 );
 
-router.get('/', AcademicSemesterControllers.getAllAcademicSemesters);
+router.get(
+  '/',
+  auth('admin'),
+  AcademicSemesterControllers.getAllAcademicSemesters,
+);
 
 router.get(
   '/:semesterId',
